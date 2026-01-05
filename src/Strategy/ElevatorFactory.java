@@ -8,14 +8,17 @@ public class ElevatorFactory {
 
 	static {
 		map.put("nearest", new NearestElevatorStrategy());
+		map.put("idlefirst", new IdleFirstStrategy());
+		map.put("directionaware",new DirectionAwareStrategy());
+		
 		
 	}
 	
 
 	
-	public static ElevatorSelectionStrategy getStrategy() {
+	public static ElevatorSelectionStrategy getStrategy(String type) {
 		
-		return map.getOrDefault("nearest", new NearestElevatorStrategy());
+		return map.getOrDefault(type, new NearestElevatorStrategy());
 		
 		
 	   }

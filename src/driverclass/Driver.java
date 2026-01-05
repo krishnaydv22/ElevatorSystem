@@ -2,6 +2,7 @@ package driverclass;
 
 import java.util.Arrays;
 
+import Strategy.ElevatorFactory;
 import Strategy.NearestElevatorStrategy;
 import button.InternalButton;
 import controllers.ElevatorController;
@@ -18,7 +19,7 @@ public class Driver {
 		ElevatorCar elevatorCar2 = new ElevatorCar(2);
 		ElevatorController elevController2 = new ElevatorController(elevatorCar2);
 		
-          ScheduleController scheduler = new ScheduleController( new NearestElevatorStrategy(), Arrays.asList(elevController1, elevController2));
+          ScheduleController scheduler = new ScheduleController(ElevatorFactory.getStrategy("directionaware"), Arrays.asList(elevController1, elevController2));
 
           ExternalButtonDispatcher externaldispatcher = new ExternalButtonDispatcher(scheduler);
           
